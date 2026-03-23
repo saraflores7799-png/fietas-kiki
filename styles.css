@@ -19,7 +19,7 @@ body {
 }
 
 header {
-    background-image: url("Fondo/descarga.jpg");
+    background-image: url("descarga.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

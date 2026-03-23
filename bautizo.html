@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bautizos - Fiestas Kiki</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Bautizos</h1>
+    <p>Elige el paquete perfecto para un cumpleaños inolvidable</p>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+</nav>
+
+<div id="carrito">
+    <h2>🛒 Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0 MXN</p>
+    <button id="btn-pagar">Pagar</button>
+</div>
+
+<section class="paquetes">
+
+    <div class="card">
+        <img src="bautizomini.jpg" alt="Paquete 1">
+        <h3>Paquete Mini</h3>
+        <p>Decoración con globos y letrero</p>
+        <p class="precio">$1 000 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete Mini" data-precio="1000">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="bautizobasico.jpg" alt="Paquete 2">
+        <h3>Paquete Básico</h3>
+        <p>Decoración de globos y cortinas incluye mesa principal</p>
+        <p class="precio">$1 500 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete basico" data-precio="1500">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="bautizoestandar.jpg" alt="Paquete 3">
+        <h3>Paquete Estandar</h3>
+        <p>Arco de globos y letrero de bautizo, incluye arrelo floral</p>
+        <p class="precio">$3 900 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete estandar" data-precio="3900">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="bautizoplus.jpg" alt="Paquete 4">
+        <h3>Paquete Plus</h3>
+        <p>Arco de globos circular, mesa principal y arreglos florales, incluye mesa de dulces</p>
+        <p class="precio">$5 900 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete plus" data-precio="5900">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="bautizopremium.jpg" alt="Paquete 5">
+        <h3>Paquete Premium</h3>
+        <p>Decoración completa de salón, es totalmente personalizada, incluimos arreglos florales y centros de mesa tambien mesa de dulces y bebidas</p>
+        <p class="precio">$11 000 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete premium" data-precio="11000">Comprar paquete</button>
+    </div>
+</section>
+
+<script>
+    const botones = document.querySelectorAll(".btn-carrito");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalTexto = document.getElementById("total");
+    const btnPagar = document.getElementById("btn-pagar");
+
+    let total = 0;
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const nombre = boton.dataset.nombre;
+            const precio = parseInt(boton.dataset.precio);
+
+            // Crear elemento en lista
+            const item = document.createElement("li");
+            item.textContent = `${nombre} - $${precio} MXN`;
+            listaCarrito.appendChild(item);
+
+            // Sumar total
+            total += precio;
+            totalTexto.textContent = `Total: $${total} MXN`;
+        });
+    });
+
+    btnPagar.addEventListener("click", () => {
+        if (total === 0) {
+            alert("Tu carrito está vacío 🛒");
+        } else {
+            alert(`Pago realizado por $${total} MXN 🎉`);
+            
+            // Vaciar carrito
+            listaCarrito.innerHTML = "";
+            total = 0;
+            totalTexto.textContent = "Total: $0 MXN";
+        }
+    });
+</script>
+
+<footer>
+    <div class="redes">
+        <h3>Síguenos en redes sociales</h3>
+        <a href="https://www.facebook.com/share/1D2cvoSJb3/">Facebook</a>
+        <a href="https://www.instagram.com/fiestas_kiki_?igsh=YnZiZGZid2lkbmlm">Instagram</a>
+        <a href="https://www.tiktok.com/@fiestas.kiki?_r=1&_t=ZS-94vxdKc80TY">TikTok</a>
+        <a href="https://wa.me/527471052657">WhatsApp</a>
+    </div>
+</footer>
+
+</body>
+</html>

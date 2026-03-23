@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby showers - Fiestas Kiki</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Baby showers</h1>
+    <p>Elige el paquete perfecto para un cumpleaños inolvidable</p>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+</nav>
+
+<div id="carrito">
+    <h2>🛒 Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0 MXN</p>
+    <button id="btn-pagar">Pagar</button>
+</div>
+
+<section class="paquetes">
+
+    <div class="card">
+        <img src="babymini.jpg" alt="Paquete 1">
+        <h3>Paquete Mini</h3>
+        <p>Arco circular con globos muy lindo para la ocasión</p>
+        <p class="precio">$800 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete Mini" data-precio="800">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="babybasico.jpg" alt="Paquete 2">
+        <h3>Paquete Básico</h3>
+        <p>Decoración y combinación de colores y mesa de dulces</p>
+        <p class="precio">$900 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete basico" data-precio="900">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="babyestandar.jpg" alt="Paquete 3">
+        <h3>Paquete Estandar</h3>
+        <p>Decoración de globos, arreglo floral y mesa principal y de dulces</p>
+        <p class="precio">$1 000 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete estandar" data-precio="1000">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="babyplus.jpg" alt="Paquete 4">
+        <h3>Paquete Plus</h3>
+        <p>Si buscas algo nuevo y fuera de tu casa este paquete es para ti.</p>
+        <p>Decoración de globos y letras de luces gigantes muy hermoso y llamativo</p>
+        <p class="precio">$1 900 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete plus" data-precio="1900">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="babypremium.jpg" alt="Paquete 5">
+        <h3>Paquete Premium</h3>
+        <p>Decoración totalmente personalizada, arreglo de globos y arreglos florales, incluye mesa principal, de dulces y bebidas</p>
+        <p class="precio">$2 500 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete premium" data-precio="2500">Comprar paquete</button>
+    </div>
+</section>
+
+<script>
+    const botones = document.querySelectorAll(".btn-carrito");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalTexto = document.getElementById("total");
+    const btnPagar = document.getElementById("btn-pagar");
+
+    let total = 0;
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const nombre = boton.dataset.nombre;
+            const precio = parseInt(boton.dataset.precio);
+
+            // Crear elemento en lista
+            const item = document.createElement("li");
+            item.textContent = `${nombre} - $${precio} MXN`;
+            listaCarrito.appendChild(item);
+
+            // Sumar total
+            total += precio;
+            totalTexto.textContent = `Total: $${total} MXN`;
+        });
+    });
+
+    btnPagar.addEventListener("click", () => {
+        if (total === 0) {
+            alert("Tu carrito está vacío 🛒");
+        } else {
+            alert(`Pago realizado por $${total} MXN 🎉`);
+            
+            // Vaciar carrito
+            listaCarrito.innerHTML = "";
+            total = 0;
+            totalTexto.textContent = "Total: $0 MXN";
+        }
+    });
+</script>
+
+<footer>
+    <div class="redes">
+        <h3>Síguenos en redes sociales</h3>
+        <a href="https://www.facebook.com/share/1D2cvoSJb3/">Facebook</a>
+        <a href="https://www.instagram.com/fiestas_kiki_?igsh=YnZiZGZid2lkbmlm">Instagram</a>
+        <a href="https://www.tiktok.com/@fiestas.kiki?_r=1&_t=ZS-94vxdKc80TY">TikTok</a>
+        <a href="https://wa.me/527471052657">WhatsApp</a>
+    </div>
+</footer>
+
+</body>
+</html>

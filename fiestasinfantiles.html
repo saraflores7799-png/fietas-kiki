@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiestas Infantiles - Fiestas Kiki</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Fiestas Infantiles</h1>
+    <p>Elige el paquete perfecto para una fiesta inolvidable</p>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+</nav>
+
+<div id="carrito">
+    <h2>🛒 Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0 MXN</p>
+    <button id="btn-pagar">Pagar</button>
+</div>
+
+<section class="paquetes">
+
+    <div class="card">
+        <img src="fiestaprincipalinfantil.jpg" alt="Paquete 1">
+        <h3>Paquete Mini</h3>
+        <p>Decoración sencilla con globos de tu temática favorita</p>
+        <p class="precio">$800 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete Mini" data-precio="800">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="fiestadragónball.jpg" alt="Paquete 2">
+        <h3>Paquete Básico</h3>
+        <p>Decoración de tu temática preferida con mesa principal</p>
+        <p class="precio">$1,500 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete basico" data-precio="1500">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="fiestawiniepooh.jpg" alt="Paquete 3">
+        <h3>Paquete Estándar</h3>
+        <p>Decoración con personajes favoritos, globos y mesa de dulces</p>
+        <p class="precio">$2,200 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete estandar" data-precio="2200">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="fiestanaturaleza.jpg" alt="Paquete 4">
+        <h3>Paquete Plus</h3>
+        <p>Incluye arco de globos, mesa decorada y mesa de dulces</p>
+        <p class="precio">$3,000 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete plus" data-precio="3000">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="pawpatrol.jpg" alt="Paquete 5">
+        <h3>Paquete Premium</h3>
+        <p>Decoración completa con temática personalizada + piñata</p>
+        <p class="precio">$4,500 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete premium" data-precio="4500">Comprar paquete</button>
+    </div>
+
+</section>
+
+<script>
+    const botones = document.querySelectorAll(".btn-carrito");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalTexto = document.getElementById("total");
+    const btnPagar = document.getElementById("btn-pagar");
+
+    let total = 0;
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const nombre = boton.dataset.nombre;
+            const precio = parseInt(boton.dataset.precio);
+
+            const item = document.createElement("li");
+            item.textContent = `${nombre} - $${precio} MXN`;
+            listaCarrito.appendChild(item);
+
+            total += precio;
+            totalTexto.textContent = `Total: $${total} MXN`;
+        });
+    });
+
+    btnPagar.addEventListener("click", () => {
+        if (total === 0) {
+            alert("Tu carrito está vacío 🛒");
+        } else {
+            alert(`Pago realizado por $${total} MXN 🎉`);
+            
+            listaCarrito.innerHTML = "";
+            total = 0;
+            totalTexto.textContent = "Total: $0 MXN";
+        }
+    });
+</script>
+
+<footer>
+    <div class="redes">
+        <h3>Síguenos en redes sociales</h3>
+        <a href="https://www.facebook.com/share/1D2cvoSJb3/" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/fiestas_kiki_?igsh=YnZiZGZid2lkbmlm" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@fiestas.kiki?_r=1&_t=ZS-94vxdKc80TY" target="_blank">TikTok</a>
+        <a href="https://wa.me/527471052657" target="_blank">WhatsApp</a>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiestas externas - Fiestas Kiki</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Fiestas de externas</h1>
+    <p>Elige el paquete perfecto para tu evento favorito</p>
+</header>
+
+<nav>
+    <a href="index.html">Inicio</a>
+</nav>
+
+<div id="carrito">
+    <h2>🛒 Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0 MXN</p>
+    <button id="btn-pagar">Pagar</button>
+</div>
+
+<section class="paquetes">
+
+    <div class="card">
+        <img src="nuevoaño.jpg" alt="Paquete 1">
+        <h3>Decoración de Año Nuevo</h3>
+        <p>Celebra tu año nuevo lleno de alegria y colores, con Kiki puedes hacer tu año nuevo inolvidable y lleno de diversión</p>
+        <p class="precio">$2 500 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete año nuevo" data-precio="2500">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="sanvalenti.jpg" alt="Paquete 2">
+        <h3>Decoración de San Valentín</h3>
+        <p>Si buscas diversión junto con romance, en Kiki creamos y diseñamos tus fiestas especialmente para ti</p>
+        <p class="precio">$2 000 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete san valentin" data-precio="2000">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="halloween.jpg" alt="Paquete 3">
+        <h3>Decoración de Halloween</h3>
+        <p>Si estas buscando crear una fiesta de horror y mucha diversión, Kiki brinda eso y más, incluye mesa con dulces especiales de halloween</p>
+        <p class="precio">$3 000 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete halloween" data-precio="3000">Comprar paquete</button>
+    </div>
+
+    <div class="card">
+        <img src="navidad.jpg" alt="Paquete 4">
+        <h3>Decoración de Navidad</h3>
+        <p>Si estas buscando algo armonioso en familia para navidad, Kiki te brinda eso y más</p>
+        <p class="precio">$1 500 MXN</p>
+        <button class="btn-carrito" data-nombre="Paquete navidad" data-precio="1500">Comprar paquete</button>
+    </div>
+
+<script>
+    const botones = document.querySelectorAll(".btn-carrito");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalTexto = document.getElementById("total");
+    const btnPagar = document.getElementById("btn-pagar");
+
+    let total = 0;
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const nombre = boton.dataset.nombre;
+            const precio = parseInt(boton.dataset.precio);
+
+            // Crear elemento en lista
+            const item = document.createElement("li");
+            item.textContent = `${nombre} - $${precio} MXN`;
+            listaCarrito.appendChild(item);
+
+            // Sumar total
+            total += precio;
+            totalTexto.textContent = `Total: $${total} MXN`;
+        });
+    });
+
+    btnPagar.addEventListener("click", () => {
+        if (total === 0) {
+            alert("Tu carrito está vacío 🛒");
+        } else {
+            alert(`Pago realizado por $${total} MXN 🎉`);
+            
+            // Vaciar carrito
+            listaCarrito.innerHTML = "";
+            total = 0;
+            totalTexto.textContent = "Total: $0 MXN";
+        }
+    });
+</script>
+
+<footer>
+    <div class="redes">
+        <h3>Síguenos en redes sociales</h3>
+        <a href="https://www.facebook.com/share/1D2cvoSJb3/">Facebook</a>
+        <a href="https://www.instagram.com/fiestas_kiki_?igsh=YnZiZGZid2lkbmlm">Instagram</a>
+        <a href="https://www.tiktok.com/@fiestas.kiki?_r=1&_t=ZS-94vxdKc80TY">TikTok</a>
+        <a href="https://wa.me/527471052657">WhatsApp</a>
+    </div>
+</footer>
+
+</body>
+</html>
